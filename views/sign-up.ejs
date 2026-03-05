@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/global.css">
+    <link rel="stylesheet" href="/sign-up.css">
+</head>
+<body>
+    <main>
+        <section class="signUpSection">
+            <h2>Create an account</h2>
+            <form action="/sign-up" method="post" class="form">
+
+                <div class="formFieldContainer">
+                    <label for="firstName">Firstname:</label>
+                    <input type="text" name="firstName" id="firstName">
+                </div>
+
+                <div class="formFieldContainer">
+                    <label for="lastName">Lastname:</label>
+                    <input type="text" name="lastName" id="lastName">
+                </div>
+
+                <div class="formFieldContainer">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" id="username">
+                </div>
+
+                <div class="formFieldContainer">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password">
+                </div>
+
+                <div class="formFieldContainer">
+                    <label for="confirmPassword">Confirm password:</label>
+                    <input type="password" name="confirmPassword" id="confirmPassword">
+                </div>
+
+                <div class="formActions">
+                    <div class="actions">
+                        <a href="/" class="backLink">Back</a>
+                        <button type="submit" class="signUpBtn">Sign Up</button>
+                    </div>
+                    <p class="signIn">
+                        Have an account?
+                        <a href="/sign-in" class="signInLink">Sign In</a>
+                    </p>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
