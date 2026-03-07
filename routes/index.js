@@ -5,4 +5,8 @@ const controller = require('../controllers');
 router.get("/sign-up", controller.getSignUpView);
 router.post("/sign-up", controller.createUser);
 
+//Membership routes
+router.get("/join-club", controller.getJoinClubView);
+router.post("/join-club", controller.createMembership);
+
 module.exports = router;
