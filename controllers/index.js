@@ -1,4 +1,9 @@
 //sign-up middleware & controller
+
+exports.getSignUpView = (req, res, next) => {
+    res.render("sign-up");
+}
+
 const { body, validationResult, matchedData } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const userStorage = require('../storages/users')
@@ -40,10 +45,6 @@ const validateUser = [
         })
 ];
 
-exports.getSignUpView = (req, res, next) => {
-    res.render("sign-up");
-}
-
 exports.createUser = [validateUser, async (req, res, next) => {
     const errors = validationResult(req);
 
@@ -56,3 +57,13 @@ exports.createUser = [validateUser, async (req, res, next) => {
     await userStorage.createUser(firstName, lastName, username, hashedPassword);
     res.redirect("/sign-in");
 }]
+
+//Membership middleware & controller
+
+exports.getJoinClubView = (req, res, next) => {
+    res.render("join-club", { clubPasscode: process.env.CLUBPASSCODE});
+}
+
+exports.createMembership = (req, res, next) => {
+
+}
