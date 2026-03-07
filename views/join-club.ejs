@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/global.css">
+    <link rel="stylesheet" href="/join-club.css">
+</head>
+<body>
+    <main class="main">
+        <section class="joinClubSection">
+            <h2>Become Odin member!</h2>
+
+            <form id="form" action="/join-club" method="post" novalidate>
+                
+                <div>
+                    <label for="passcode">Passcode</label>
+                    <div id="passcodeErr" class="error"></div>
+                    <input id="passcode" name="passcode" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" required placeholder="123456">
+                </div>
+
+                <button class="joinClubBtn" type="submit">Join Club</button>
+            </form>
+        </section>
+
+        <script>
+            const form = document.getElementById("form");
+            const input = document.getElementById("passcode");
+            const container = document.getElementById("passcodeErr");
+
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+
+                container.replaceChildren();
+
+                const errors = []
+
+                if (input.validity.valueMissing) {
+                    errors.push('Value is required')
+                }
+
+                if (input.validity.tooLong) {
+                    errors.push(`Cannot exceed ${input.maxLength} characters.`)
+                }
+
+                if (input.validity.patternMismatch) {
+                    errors.push('Only numbers are allowed')
+                }
+                
+                if (input.value !== '<%= clubPasscode %>' ) {
+                    errors.push('Wrong passcode');
+                }
+
+                if (errors.length > 0) {
+                    errors.forEach((msg) => {
+                        const p = document.createElement('p');
+                        p.textContent = msg;
+                        container.appendChild(p);
+                    })
+                }
+
+                if (errors.length === 0) {
+                    form.submit();
+                }
+            })
+        </script>
+    </main>
+</body>
