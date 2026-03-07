@@ -84,7 +84,16 @@ exports.createMembership = [validatePasscode, async (req, res, next) => {
         return res.status(400).render("join-club", { errors: errors.array() });
     }
 
-    //await userStorage.giveMembership(req.user.id)
+    await userStorage.createMembership(req.user.id)
     res.redirect("/");
 
 } ] 
+
+// signIn middleware & controller
+const passport = require('passport');
+
+exports.getSignInView = (req, res, next) => {
+    res.render("sign-in");
+}
+
+exports.handleSignIn = passport.authenticate('local', {successRedirect: '/', failureRedirect: 'sign-up'})
