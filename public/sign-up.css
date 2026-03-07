@@ -113,8 +113,8 @@ input:focus {
     box-shadow: var(--input-boxshadowfocus) ;
 }
 
-input::placeholder {
-    color: var(--text-input);
+.error {
+    color: red;
 }
 
 .signIn {
