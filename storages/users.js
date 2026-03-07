@@ -21,9 +21,14 @@ async function getUserOnId(id) {
     return user;
 }
 
+async function createMembership(id) {
+    await db.query("UPDATE users SET membership = true WHERE users.id = $1 ", [id]);
+}
+
 module.exports = {
     createUser,
     userExists,
     getUserOnUsername,
     getUserOnId,
+    createMembership
 }
