@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<head>
+<head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
@@ -10,31 +10,36 @@
     <main>
         <section class="signUpSection">
             <h2>Create an account</h2>
-            <form action="/sign-up" method="post" class="form">
+            <form action="/sign-up" method="post" class="form" id="form" novalidate>
 
                 <div class="formFieldContainer">
-                    <label for="firstName">Firstname:</label>
-                    <input type="text" name="firstName" id="firstName">
+                    <label for="firstName">* Firstname</label>
+                    <div id="fnError" class="error"></div>
+                    <input type="text" name="firstName" id="firstName" maxlength="60" pattern="^[^0-9]+$" required>
                 </div>
 
                 <div class="formFieldContainer">
-                    <label for="lastName">Lastname:</label>
-                    <input type="text" name="lastName" id="lastName">
+                    <label for="lastName">* Lastname</label>
+                    <div id="lnError" class="error"></div>
+                    <input type="text" name="lastName" id="lastName" maxlength="60" pattern="^[^0-9]+$" required>
                 </div>
 
                 <div class="formFieldContainer">
-                    <label for="username">Username:</label>
-                    <input type="text" name="username" id="username">
+                    <label for="username">* Username</label>
+                    <div id="unError" class="error"></div>
+                    <input type="text" name="username" id="username" maxlength="60" pattern="^[a-z][a-z0-9]*$" required>
                 </div>
 
                 <div class="formFieldContainer">
-                    <label for="password">Password:</label>
-                    <input type="password" name="password" id="password">
+                    <label for="password">* Password</label>
+                    <div id="pwError" class="error"></div>
+                    <input type="password" name="password" id="password" minlength="8" maxlength="128" required>
                 </div>
 
                 <div class="formFieldContainer">
-                    <label for="confirmPassword">Confirm password:</label>
-                    <input type="password" name="confirmPassword" id="confirmPassword">
+                    <label for="confirmPassword">* Confirm password</label>
+                    <div id="cpwError" class="error"></div>
+                    <input type="password" name="confirmPassword" id="confirmPassword" required>
                 </div>
 
                 <div class="formActions">
@@ -50,4 +55,76 @@
             </form>
         </section>
     </main>
+
+    <script>
+        const form = document.getElementById('form');
+
+        const fields = [ 
+            { input: 'firstName', error: 'fnError', type: 'name' },
+            { input: 'lastName', error: 'lnError', type: 'name' },
+            { input: 'username', error: 'unError', type: 'username' },
+            { input: 'password', error: 'pwError', type: 'password' },
+            { input: 'confirmPassword', error: 'cpwError', type: 'confirmPassword' }
+        ];
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            let allValid = true;
+
+            fields.forEach((f) => {
+                const inputEl = document.getElementById(f.input);
+                const errorEl = document.getElementById(f.error);
+                const valid = showErrors(inputEl, errorEl, f.type);
+                if (!valid) allValid = false;
+            })
+
+            if (allValid) {
+                form.submit();
+            }
+        })
+
+        function showErrors(input, container, type) {
+            container.replaceChildren();
+            const errors = [];
+
+            if (input.validity.valueMissing) {
+                errors.push('Value is required.');
+            }
+
+            if (input.validity.tooLong) {
+                errors.push(`Cannot exceed ${input.maxLength} characters.`);
+            }
+            
+            if (type === 'password') {
+                if (input.validity.tooShort) {
+                    errors.push(`Password must be at least ${input.minLength} characters.`);
+                }
+            }
+         
+            if (input.validity.patternMismatch) {
+                if (type === 'name') errors.push('Numbers not allowed')
+                if (type === 'username') errors.push('Lowercase letters and numbers only, must start with a letter.');
+            }
+            
+
+            if (type === 'confirmPassword') {
+                const passwordValue = document.getElementById('password').value;
+                if (input.value !== passwordValue) {
+                    errors.push('Passwords do not match.');
+                }
+            }
+            
+            if (errors.length > 0) {
+                errors.forEach(msg => {
+                    const p = document.createElement('p');
+                    p.textContent = msg;
+                    container.appendChild(p);
+                });
+            }
+
+            return errors.length === 0;
+        }
+
+    </script>
 </body>
