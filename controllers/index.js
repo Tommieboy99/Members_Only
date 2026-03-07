@@ -64,6 +64,27 @@ exports.getJoinClubView = (req, res, next) => {
     res.render("join-club", { clubPasscode: process.env.CLUBPASSCODE});
 }
 
-exports.createMembership = (req, res, next) => {
+const validatePasscode = [
+    body("passcode")
+    .isLength({max: 6}).withMessage('Cannot exceed 6 characters')
+    .isNumeric().withMessage('Passcode only contains numbers(0-9)')
+    .custom((value) => {
+        if (value !== process.env.CLUBPASSCODE) {
+            throw new Error('Incorrect passcode');
+        } 
 
-}
+        return true;
+    })
+]
+
+exports.createMembership = [validatePasscode, async (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(400).render("join-club", { errors: errors.array() });
+    }
+
+    //await userStorage.giveMembership(req.user.id)
+    res.redirect("/");
+
+} ] 
