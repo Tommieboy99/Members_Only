@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="/global.css">
+    <link rel="stylesheet" href="/homepage.css">
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <h1>Odin Members</h1>
+            <% if (user) { %>
+                <a href="/log-out">Log out</a>
+            <% } else { %>
+                <a href="/sign-in">Sign In</a>
+            <% } %>
+        </header>
+        <main class="main">
+        <% if (user) { %>
+            <div class="userMessage">
+                <p>
+                    Welcome to the Odin community <%= user.firstname + ' ' + user.lastname %>! 
+                <% if (!user.membership) { %>
+                    Want to be more than just be a member of the community? Become <a href="/join-club">Premium Member</a>.
+                <% } %>
+                </p>
+            </div>
+        <% } %>
+
+            <div class="messageContainer">
+            <% if (user) { %>
+                <form action="/message" method="post" class="messageForm">
+
+                    <div class="fieldContainer">
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" placeholder="The Odin Project">
+                    </div>
+
+                    <div class="fieldContainer">
+                        <label for="message">Message</label>
+                        <textarea name="message" id="message" maxlength="280" rows="4" placeholder="Thank you so much for existing" required></textarea>
+                    </div>
+
+                    <button type="submit" class="postBtn">Post</button>
+
+                </form>
+            <% } %>
+
+            <div class="messageSection">
+                <h2>Timeline</h2>
+            <%  messages.map((message) => { %>
+                <div class="messageCard">
+                    <div class="messageUser">
+                        <img src="/odin-icon-22b41941.svg" alt="odin">
+                        <div>
+                        <% if (user && user.membership) { %>
+                            <p> <%= message.firstname + ' ' + message.lastname %> </p>
+                            <p> @<%= message.username %></p>
+                        <% } else { %>
+                            <p> <%= "✻".repeat(message.firstname.length) + ' ' + "✻".repeat(message.lastname.length) %> </p>
+                            <p> @<%= "✻".repeat(message.username.length) %> </p>
+                        <% } %>
+                    </div>
+                </div>
+                <div class="messageBody">
+                    <p><strong><%= message.title %></strong></p>
+                    <p><i><%= message.body %></i></p>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </main>
+</body>
