@@ -4,6 +4,7 @@ body {
 
 #app {
     max-width: 724px;
+    min-height: 100dvh;
     margin: auto;
     background-color: var(--secondary-bgc);
     padding-inline: clamp(1rem, calc(0.2079rem + 3.9604vw), 2rem);

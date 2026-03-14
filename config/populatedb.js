@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS users (
     firstname VARCHAR(50) NOT NULL,
     lastname VARCHAR(50) NOT NULL,
     username VARCHAR(50) NOT NULL UNIQUE,
-    password NOT NULL,
+    password VARCHAR(128) NOT NULL,
     membership BOOLEAN NOT NULL DEFAULT FALSE,
     admin BOOLEAN NOT NULL DEFAULT FALSE
 );
@@ -27,7 +27,8 @@ async function main() {
 
     console.log("hey");
     const client = new Client({
-        connectionString
+        connectionString,
+        ssl: { rejectUnauthorized: false}
     })
 
     await client.connect();
