@@ -9,10 +9,9 @@
     --primary-border: oklch(0.5 0.05 255);
 
     --h1-fs: clamp(1.5625rem, calc(0.8199rem + 3.7129vw), 2.5rem);
-    --h2-fs: clamp(1.25rem, calc(0.755rem + 2.4752vw), 1.875rem);
-    --p-fs: clamp(1rem, calc(0.505rem + 2.4752vw), 1.625rem);
-    --a-fs: clamp(1.125rem, calc(0.63rem + 2.4752vw), 1.75rem);
-    --date-fs: clamp(0.75rem, calc(0.453rem + 1.4851vw), 1.125rem);
+    --p-fs: clamp(0.875rem, calc(0.578rem + 1.4851vw), 1.25rem);
+    --a-fs: clamp(1rem, calc(0.703rem + 1.4851vw), 1.375rem);
+    --date-fs: clamp(0.75rem, calc(0.651rem + 0.495vw), 0.875rem);
 }
 
 * {
