@@ -7,54 +7,55 @@
     <link rel="stylesheet" href="/sign-up.css">
 </head>
 <body>
-    <main>
-        <section class="signUpSection">
-            <h2>Create an account</h2>
-            <form action="/sign-up" method="post" class="form" id="form" novalidate>
+    <div id="app">
+        <main class="signup-page">
+            <section class="signUpSection">
+                <h1>Sign Up</h1>
+                <form action="/sign-up" method="post" class="form" id="form" novalidate>
 
-                <div class="formFieldContainer">
-                    <label for="firstName">* Firstname</label>
-                    <div id="fnError" class="error"></div>
-                    <input type="text" name="firstName" id="firstName" maxlength="60" pattern="^[^0-9]+$" required>
-                </div>
+                    <div class="formFieldContainer">
+                        <label for="firstName">* Firstname</label>
+                        <div id="fnError" class="error"></div>
+                        <input type="text" name="firstName" id="firstName" maxlength="60" pattern="^[^0-9]+$" required>
+                    </div>
 
-                <div class="formFieldContainer">
-                    <label for="lastName">* Lastname</label>
-                    <div id="lnError" class="error"></div>
-                    <input type="text" name="lastName" id="lastName" maxlength="60" pattern="^[^0-9]+$" required>
-                </div>
+                    <div class="formFieldContainer">
+                        <label for="lastName">* Lastname</label>
+                        <div id="lnError" class="error"></div>
+                        <input type="text" name="lastName" id="lastName" maxlength="60" pattern="^[^0-9]+$" required>
+                    </div>
 
-                <div class="formFieldContainer">
-                    <label for="username">* Username</label>
-                    <div id="unError" class="error"></div>
-                    <input type="text" name="username" id="username" maxlength="60" pattern="^[a-z][a-z0-9]*$" required>
-                </div>
+                    <div class="formFieldContainer">
+                        <label for="username">* Username</label>
+                        <div id="unError" class="error"></div>
+                        <input type="text" name="username" id="username" maxlength="60" pattern="^[a-z][a-z0-9]*$" required>
+                    </div>
 
-                <div class="formFieldContainer">
-                    <label for="password">* Password</label>
-                    <div id="pwError" class="error"></div>
-                    <input type="password" name="password" id="password" minlength="8" maxlength="128" required>
-                </div>
+                    <div class="formFieldContainer">
+                        <label for="password">* Password</label>
+                        <div id="pwError" class="error"></div>
+                        <input type="password" name="password" id="password" minlength="8" maxlength="128" required>
+                    </div>
 
-                <div class="formFieldContainer">
-                    <label for="confirmPassword">* Confirm password</label>
-                    <div id="cpwError" class="error"></div>
-                    <input type="password" name="confirmPassword" id="confirmPassword" required>
-                </div>
+                    <div class="formFieldContainer">
+                        <label for="confirmPassword">* Confirm password</label>
+                        <div id="cpwError" class="error"></div>
+                        <input type="password" name="confirmPassword" id="confirmPassword" required>
+                    </div>
 
-                <div class="formActions">
-                    <div class="actions">
+                    <div class="btn-group">
                         <a href="/" class="backLink">Back</a>
                         <button type="submit" class="signUpBtn">Sign Up</button>
                     </div>
-                    <p class="signIn">
-                        Have an account?
-                        <a href="/sign-in" class="signInLink">Sign In</a>
-                    </p>
-                </div>
-            </form>
-        </section>
-    </main>
+
+                </form>
+                <p class="signin-footer">
+                    Have an account?
+                    <a href="/sign-in">Sign In</a>
+                </p>
+            </section>
+        </main>
+    </div>
 
     <script>
         const form = document.getElementById('form');

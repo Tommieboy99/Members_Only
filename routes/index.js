@@ -13,4 +13,9 @@ router.post("/join-club", controller.createMembership);
 router.get("/sign-in", controller.getSignInView);
 router.post("/sign-in", controller.handleSignIn);
 
+//homepage routes
+router.get("/", controller.getHomepageView)
+router.get("/log-out", controller.getUserLogOut)
+router.post("/message", controller.createMessage)
+
 module.exports = router;

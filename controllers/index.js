@@ -97,3 +97,31 @@ exports.getSignInView = (req, res, next) => {
 }
 
 exports.handleSignIn = passport.authenticate('local', {successRedirect: '/', failureRedirect: 'sign-up'})
+
+//root
+const messageStorage = require('../storages/messages')
+exports.getHomepageView = async (req, res, next) => {
+    const messages = await messageStorage.getMessages();
+
+    res.render('homepage', { user: req.user, messages });
+}
+
+//logOut middleware & controller
+exports.getUserLogOut = (req, res, next) => {
+    req.logout((err) => {
+        if (err) {
+            return next(err);
+        }
+
+        res.redirect("/");
+    })
+}
+
+exports.createMessage = async (req, res, next) => {
+    const { title, message } = req.body;
+    const { id } = req.user;
+
+    await messageStorage.createMessage(title, message, id);
+
+    res.redirect("/");
+}

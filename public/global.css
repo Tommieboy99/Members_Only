@@ -1,3 +1,19 @@
+:root {
+    --primary-bgc: oklch(0.19 0.05 255);
+    --secondary-bgc: oklch(0.22 0.05 255);
+    --tertiary-bgc: oklch(0.25 0.05 255);
+
+    --primary-clr: oklch(0.9 0.02 255);
+    --secondary-clr: oklch(0.7 0.02 255);
+
+    --primary-border: oklch(0.5 0.05 255);
+
+    --h1-fs: clamp(1.5625rem, calc(0.8199rem + 3.7129vw), 2.5rem);
+    --h2-fs: clamp(1.25rem, calc(0.755rem + 2.4752vw), 1.875rem);
+    --p-fs: clamp(1rem, calc(0.505rem + 2.4752vw), 1.625rem);
+    --a-fs: clamp(1.125rem, calc(0.63rem + 2.4752vw), 1.75rem);
+}
+
 * {
     box-sizing: border-box;
     padding: 0;
@@ -26,4 +42,18 @@ button {
 a {
     color: inherit;
     cursor: pointer;
+}
+
+p {
+    overflow-wrap: break-word;
+}
+
+input:-webkit-autofill {
+    box-shadow: 0 0 0 1000px var(--tertiary-bgc) inset !important;
+    -webkit-text-fill-color: var(--primary-clr) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--secondary-clr);
 }
