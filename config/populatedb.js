@@ -24,6 +24,8 @@ CREATE TABLE IF NOT EXISTS messages (
 const connectionString = process.argv[2];
 
 async function main() {
+
+    console.log("hey");
     const client = new Client({
         connectionString
     })
