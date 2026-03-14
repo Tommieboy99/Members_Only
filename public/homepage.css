@@ -39,16 +39,8 @@ body {
     transform: translateY(-1px);
 }
 
-.userMessage {
-    margin-top: 1rem;
-}
-
 .userMessage p {
     font-size: var(--p-fs)
-}
-
-.messageContainer {
-    margin-top: 1rem;
 }
 
 .messageForm {
@@ -98,7 +90,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    margin-top: 1rem;
 }
 
 .messageCard {
