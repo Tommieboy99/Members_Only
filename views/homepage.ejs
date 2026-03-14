@@ -61,13 +61,24 @@
                             <p> <%= "✻".repeat(message.firstname.length) + ' ' + "✻".repeat(message.lastname.length) %> </p>
                             <p> @<%= "✻".repeat(message.username.length) %> </p>
                         <% } %>
+                        </div>
+                    </div>
+
+                    <div class="messageBody">
+                        <p><strong><%= message.title %></strong></p>
+                        <p><i><%= message.body %></i></p>
+                    </div>
+
+                    <div class="messageFooter">
+                        <p>Posted: 
+                            <% if (user && user.membership) { %>
+                                <%= new Date(message.date).getDate() %>/<%= new Date(message.date).getMonth() + 1 %>/<%= new Date(message.date).getFullYear() %>
+                            <% } else { %>
+                                ✻✻/✻✻/✻✻✻✻
+                            <% } %>
+                        </p>
                     </div>
                 </div>
-                <div class="messageBody">
-                    <p><strong><%= message.title %></strong></p>
-                    <p><i><%= message.body %></i></p>
-                </div>
-            </div>
             <% }) %>
         </div>
     </main>

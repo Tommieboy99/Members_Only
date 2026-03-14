@@ -116,3 +116,10 @@ body {
 .messageBody {
     margin-top: 1rem;    
 }
+
+.messageFooter {
+    margin-top: 1rem;
+    font-size: var(--date-fs);
+    color: var(--secondary-clr);
+    text-align: end;
+}

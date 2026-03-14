@@ -12,6 +12,7 @@
     --h2-fs: clamp(1.25rem, calc(0.755rem + 2.4752vw), 1.875rem);
     --p-fs: clamp(1rem, calc(0.505rem + 2.4752vw), 1.625rem);
     --a-fs: clamp(1.125rem, calc(0.63rem + 2.4752vw), 1.75rem);
+    --date-fs: clamp(0.75rem, calc(0.453rem + 1.4851vw), 1.125rem);
 }
 
 * {
