@@ -23,6 +23,10 @@ body {
     font-size: var(--h1-fs)
 }
 
+.main {
+    padding: 2rem 0rem;
+}
+
 .header a {
     font-size: var(--a-fs);
     text-decoration: none;
