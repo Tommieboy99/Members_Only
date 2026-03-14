@@ -24,7 +24,7 @@ body {
 }
 
 .main {
-    padding: 2rem 0rem;
+    padding: 1rem 0rem;
 }
 
 .header a {
@@ -48,6 +48,8 @@ body {
     flex-direction: column;
     gap: 1rem;
     font-size: var(--p-fs);
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 .fieldContainer {
