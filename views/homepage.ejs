@@ -51,6 +51,7 @@
                 <h2>Timeline</h2>
             <%  messages.map((message) => { %>
                 <div class="messageCard">
+
                     <div class="messageUser">
                         <img src="/odin-icon-22b41941.svg" alt="odin">
                         <div>
@@ -78,6 +79,12 @@
                             <% } %>
                         </p>
                     </div>
+
+                    <% if (user && user.admin) { %>
+                    <div class="yo">
+                        <a href="/delete">Delete</a>
+                    </div>
+                    <% } %>
                 </div>
             <% }) %>
         </div>
