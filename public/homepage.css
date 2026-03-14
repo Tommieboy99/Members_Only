@@ -104,6 +104,9 @@ body {
     font-size: var(--p-fs);
 }
 
+img {
+    height: 45px;
+}
 .messageUser {
     display: flex;
     gap: 0.5rem;
