@@ -97,10 +97,6 @@ body {
     margin-top: 1rem;
 }
 
-.messageSection h2 {
-    font-size: var(--h2-fs)
-}
-
 .messageCard {
     background-color: var(--tertiary-bgc);
     border: 1px solid var(--primary-border);
